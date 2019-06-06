@@ -38,9 +38,7 @@ class Addlink extends Component{
 
        
     }
-    componentWillUpdate(nextProps){
-
-    }
+    
     handleChange(event) {
         let {value, id} = event.target
         let data = true
