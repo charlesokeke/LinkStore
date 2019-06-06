@@ -1,0 +1,13 @@
+.b-shadow{
+	-webkit-box-shadow: 0 10px 6px -6px #777;
+	   -moz-box-shadow: 0 10px 6px -6px #777;
+	        box-shadow: 0 10px 6px -6px #777;
+}
+.capitalize {
+	text-transform:capitalize;
+	font-family:"'Poppins', sans-serif";
+}
+.tooltip-width{
+	max-width: 700px ;
+	text-align: start;
+}
