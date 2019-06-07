@@ -1,5 +1,4 @@
 import React,{Component} from "react"
-//import SearchBox from '../../containers/SearchBox/SearchBox'
 import {connect} from 'react-redux'
 import Links from '../Links/Links'
 import './AddLink.css'
@@ -72,7 +71,7 @@ class Addlink extends Component{
       }
 
     render () {
-        const {id,errors,currentUser,userLinks,username,history} = this.props 
+        const {id,errors,currentUser,userLinks,history} = this.props 
         console.log(errors) 
         if(!currentUser.isAuthenticated){
             history.push('/')
