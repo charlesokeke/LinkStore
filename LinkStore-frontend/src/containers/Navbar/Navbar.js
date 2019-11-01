@@ -1,5 +1,5 @@
 import React,{PureComponent,Fragment} from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {logout} from '../../store/actions/auth'
 import SearchBox from '../SearchBox/SearchBox'
@@ -20,7 +20,13 @@ const style = {
             flexDirection:'row'
     },
         innerLink: {
-            color:"#fff"
+            color:"#fff",
+            lineHeight:"1.6",
+            fontWeight:'600',
+            opacity:"0.9",
+            textDecoration:'none',
+            cursor:"pointer"
+
         },
         userGreetingBox:{
         position:'absolute',
@@ -58,14 +64,14 @@ class Navbar extends PureComponent {
     render() {
         const {username, isAuthenticated, id} = this.props
         return (
-            <div style={{position:'relative',boxShadow: "-2px 1px 5px 0px rgba(0,0,0,0.75)"}}>
+            <div style={{position:'relative',boxShadow: " 0 2px 3px #ccc"}}>
                 <div style={style.userGreetingBox}>
                 { this.props.isAuthenticated ? 
                     <span className={`btn btn-md  bg-primary text-white animated ${this.state.animateGreetings}`}>{` Hello ${username.charAt(0).toUpperCase() + username.slice(1)} !`}</span> : ''}
                 </div>
                 <div className="container-fluid bg-primary d-flex justify-content-end align-items-center p-1">
                     <ul className="mr-auto" style={style.ulTagDefault}>                        
-                        <li style={style.linkStyle}><Link to="/" className="text-white">LinkStore</Link></li>
+                        <li style={style.linkStyle}><NavLink to="/" className="text-white" style={style.innerLink}>LinkStore</NavLink></li>
                         {/** this.props.isAuthenticated ? <li style={style.linkStyle} className="text-white">{` Welcome ${this.props.username}`}</li> : ''*/}
                         <li style={style.linkStyle}><SearchBox placeholderValue={'Search by site name'} showButton={true}/></li>
                     </ul>

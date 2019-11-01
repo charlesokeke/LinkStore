@@ -14,7 +14,7 @@ class UpdateLink extends PureComponent{
     constructor (props) {
         super(props)
         this.state = {
-            public:'',
+            public:true,
             url:"",
             urld:'',
             website:''
@@ -29,7 +29,7 @@ class UpdateLink extends PureComponent{
     }
     componentWillReceiveProps(nextProps){
         this.setState({
-            public:'',
+            public:true,
             id:nextProps.currentUpdateLinkdata[0]._id,
             url:nextProps.currentUpdateLinkdata[0].url,
             urld:nextProps.currentUpdateLinkdata[0].urlDescription,
@@ -60,8 +60,10 @@ class UpdateLink extends PureComponent{
             }
 
         }
-        this.props.postUpdateForLink(this.state.id,this.state)
-        this.props.history.push('/')
+        this.props.postUpdateForLink(this.state.id,this.state).then(() => {
+            this.props.history.push('/')
+        })
+        
         
       }
 

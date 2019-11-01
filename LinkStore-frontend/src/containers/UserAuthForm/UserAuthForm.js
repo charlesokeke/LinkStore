@@ -23,8 +23,7 @@ class UserAuthForm extends Component{
             profileImageUrl:'',
             addClass:'',
             fileName:'',
-            heading:this.props.heading,
-            ensureEntry:true
+            heading:"",
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,8 +39,8 @@ class UserAuthForm extends Component{
     }
         
    handleChange2 = (evt)  => {
-       if(evt.target.files[0].size > 50000){
-            alert("Sorry but the file size is too big. Please upload a smaller size")
+       if(evt.target.files[0].size > 2000){
+            alert("Sorry but the file size is too big. Please upload a smaller size or not")
             evt.target.value = ''
             return;
        }
@@ -59,23 +58,23 @@ class UserAuthForm extends Component{
         this.showFileAddedAndRemoveItAfterTwoSeconds()
         this.props.removeError()
     
-
     }
+    
      static getDerivedStateFromProps (nextProps,prevState){
-        console.log(nextProps.heading)
-        console.log(prevState.heading)
-        if(nextProps.heading !== prevState.heading && prevState.ensureEntry){
+
+        if(nextProps.heading !== prevState.heading){
             return {
                 email:'',
                 password:'',
                 username:'',
                 profileImageUrl:'',
-                ensureEntry:false
+                heading:nextProps.heading
             }
         }else{
             return prevState
         }
     }
+
 
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value});
@@ -103,8 +102,7 @@ class UserAuthForm extends Component{
         if(keyName === 'email' && !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value)){
             error += " Email must be valid address."
     }
-        
-        }
+            }
         return error
 
       }
@@ -115,7 +113,6 @@ class UserAuthForm extends Component{
             if(error){
                 this.props.addError(error)
                 return;
-
             }
         }
        
@@ -128,7 +125,7 @@ class UserAuthForm extends Component{
       }
 
     render () {
-        console.log(this.state)
+        console.log(this.props.heading)
         const {email,password,username} = this.state
         this.props.history.listen(() =>{
             this.props.removeError()
@@ -227,7 +224,8 @@ class UserAuthForm extends Component{
                                 placeholder="Profile image url" 
                                 className="mt-0"
                                 onChange={this.handleChange2}
-                                encType="multipart/form-data" 
+                                encType="multipart/form-data"
+                                accept=".png,.jpg,.gif" 
                             />
                         </div>
                     </div> 

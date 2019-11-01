@@ -88,13 +88,13 @@ class Addlink extends Component{
                     {errors.message ? <div className="alert alert-danger">{errors.message}</div> : ""}
                     <div className="form-group row">
                         <div className="col-sm-12">
-                        <input type="text" className="form-control"  value={this.state.url} onChange={this.handleChange} name="url" placeholder="Enter URL" style={style.signupbox} required/>
+                        <input type="text" className="form-control"  value={this.state.url} onChange={this.handleChange} name="url" placeholder="Enter url e.g http://" style={style.signupbox} required/>
                         </div>
                     </div>
                     
                     <div className="form-group row">
                         <div className="col-sm-12">
-                        <input type="text" className="form-control" name="website" onChange={this.handleChange} placeholder="Enter website name for example Google" style={style.signupbox}required/>
+                        <input type="text" className="form-control" name="website" onChange={this.handleChange} placeholder="Enter website name e.g Google" style={style.signupbox}required/>
                         </div>
                     </div>
                     <div className="form-group row">
@@ -116,10 +116,10 @@ class Addlink extends Component{
 
                 </div>
                 <div style={{flex:'1', display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
-                    <h4 className="lead text-bold text-center" style={{textTransform:'capitalize'}}> 
+                    <h4 className="lead text-bold text-center"> 
                             {
                              userLinks.length ? "Recent entries" :
-                             "You currently have no public or private entries"
+                             "You have no entries"
                             }
                     </h4>
                     <div className='links-container'>

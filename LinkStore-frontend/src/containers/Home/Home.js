@@ -10,12 +10,10 @@ import {getAllPublicLinks} from '../../store/actions/allLinks'
 class Home extends PureComponent {
     componentDidMount (){
         this.props.getAllPublicLinks({})
-        console.log('component did mount is called')
+    
     }
     render () {
-        console.log('render is called')
         const {id, publicLinks, currentUser } = this.props
-
         return(
             <div className="container text-center d-flex justify-content-center align-items-center">
                 <div className="links-container">
@@ -23,8 +21,8 @@ class Home extends PureComponent {
                 <div className="alert alert-success">{`Welcome ${this.props.currentUser.user.username}`.toUpperCase()}</div> 
                 : "" */}
                 {/** <MessageModal />*/}
-                <h2 style={{fontFamily:"'Poppins', sans-serif"}}> Welcome to <span class="btn btn-primary btn-lg" style={{cursor:'none'}}>LinkStore</span></h2>
-                <h6 style={{fontFamily:"'Poppins', sans-serif",color:"#323232",fontSize:'13px'}}> Store, update, delete and search webpage links</h6>
+                <h2 style={{fontFamily:"'Poppins', sans-serif"}}> Welcome to LinkStore</h2>
+                <h6 style={{fontFamily:"'Poppins', sans-serif",color:"#323232",fontSize:'13px'}}> Manage webpage links</h6>
 
                     <ul style={{padding:'0px', margin:'0px'}}>
                         {publicLinks.map((el,key) => (

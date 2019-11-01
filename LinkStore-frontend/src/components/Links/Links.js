@@ -2,15 +2,17 @@ import React, {PureComponent} from 'react'
 import Moment from 'react-moment'
 import { Link, withRouter } from 'react-router-dom'
 import {connect} from  'react-redux'
-import {removeThatLink} from '../../store/actions/allLinks'
+import {removeThatLink,getAllPublicLinks} from '../../store/actions/allLinks'
 import ReactTooltip from 'react-tooltip'
 import './LinkCss.css'
 
 
 class  Links extends PureComponent{
     removeLink (id){
-        this.props.removeThatLink(id)  
-        
+        this.props.removeThatLink(id) 
+        setTimeout(() => {
+            this.props.getAllPublicLinks({})
+        },50)  
     }
     shortenDescriptionText = (textDescription) => {
         if(textDescription !== undefined){
@@ -39,20 +41,24 @@ class  Links extends PureComponent{
                         </small>
                         <img src={profileImageUrl || "https://img.icons8.com/bubbles/2x/user.png"} alt="pic" className="mr-3 mt-3 rounded-circle" width="64" height="64" />
                        <div className="media-body">
-                            <p className="text-left text-bold mb-0 mt-1 capitalize">
+                            <p className="text-left  mb-0 mt-1 capitalize" style={{opacity:"0.8",fontWeight:"600",fontFamily:"Poppins, sans-serif",opacity:"0.9",letterSpacing:"normal"}}>
                                 {this.shortenUsernameText(username)} 
                              <br/>
                               <small> 
-                                  <i><Moment>{date}</Moment></i>
+                                  <span style={{color:"#666"}}><Moment fromNow>{date}</Moment></span>
                               </small>
                             </p>
                             <p className="text-left">
-                               <a href={/^(ftp|http|https):\/\/[^ "]+$/.test(url) ? url: '/'} data-tip={text.length !== this.shortenDescriptionText(text).length ? text : null} target='_blank' rel="noopener noreferrer" style={{fontSize:"13px"}}>
-                                {this.shortenDescriptionText(text)}
+                               <a href={/^(ftp|http|https):\/\/[^ "]+$/.test(url) ? url: '/'}
+                                    data-tip={text.length !== this.shortenDescriptionText(text).length ? text : null}
+                                    target='_blank' 
+                                    rel="noopener noreferrer" 
+                                    style={{fontSize:"12px", textDecoration:'none',lineHeight:"1.6",cursor:"pointer",letterSpacing:"normal",fontWeight:"600"}}>
+                                    {this.shortenDescriptionText(text)}
                                </a>
                             </p> 
                             <div style={{display:'flex',flexDirection:'row-reverse'}}>
-                              {(userid === dataid && isAuthenticated) && <span className="btn btn-sm btn-success ml-1"><Link to={`/update/${updateid}`} className="text-white">update</Link></span>}
+                              {(userid === dataid && isAuthenticated) && <span className="btn btn-sm btn-success ml-1"><Link to={`/update/${updateid}`} className="text-white" style={{textDecoration:"none"}}>update</Link></span>}
                               {(userid === dataid && isAuthenticated) && <button onClick={this.removeLink.bind(this,updateid)} className="btn btn-danger btn-sm" >delete</button>}
                             </div>
                         </div>
@@ -67,4 +73,4 @@ function mapStateToProps (state){
         user:state.currentUser
     }
 }
-export default withRouter(connect(mapStateToProps,{removeThatLink})(Links))
+export default withRouter(connect(mapStateToProps,{removeThatLink,getAllPublicLinks})(Links))

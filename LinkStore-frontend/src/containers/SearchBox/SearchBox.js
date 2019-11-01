@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {searchForLinks,genericDispatch} from '../../store/actions/allLinks'
 
+
 class SearchBox extends PureComponent{
     constructor (props) {
         super(props)
@@ -39,12 +40,22 @@ class SearchBox extends PureComponent{
             })
     
       }
+
+    
     render (){
         return(
             <div style={{width:'100%'}}>
                <form className="row" onSubmit={this.handleSubmit}>
                 <div className="input-group col-md-12 col-sm-12">
-                    <input className="form-control py-2 " type="search" value={this.state.value} placeholder={this.props.placeholderValue} onChange={this.handleChange}></input>
+                    <input 
+                        className="form-control py-2 " 
+                        type="search" 
+                        value={this.state.value}
+                        placeholder={this.props.placeholderValue}
+                        onChange={this.handleChange}
+                      >
+
+                      </input>
                     {this.props.showButton ?
                     <Fragment>
                         <span className="input-group-append">

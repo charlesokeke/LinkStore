@@ -1,15 +1,24 @@
-import {GET_ALL_PUBLIC_LINKS, CLEAR_FILTER_RESULT, SEARCH_LINKS,SEARCHED_USER_LINKS,ALL_USER_LINKS,REMOVE_LINK,GET_LINK_FOR_UPDATE,SET_UPDATE_FOR_LINK, FILTER_RESULT} from  "../actionTypes"
+import {GET_ALL_PUBLIC_LINKS, 
+        CLEAR_FILTER_RESULT, 
+        SEARCH_LINKS,
+        SEARCHED_USER_LINKS,
+        ALL_USER_LINKS,
+        REMOVE_LINK,
+        GET_LINK_FOR_UPDATE,
+        SET_UPDATE_FOR_LINK, 
+        FILTER_RESULT
+    } from  "../actionTypes"
 
 const initialState = {
-     allPublicLinks:[],
-     foundLinks:[],
-     searchedPublicLinks:[],
-     searchedUserLinks:[],
-     allUserLinks:[],
-     removeLink:'',
-     getUpdateLink:{},
-     updatedLink:{},
-     filterResult:[]
+        allPublicLinks:[],
+        foundLinks:[],
+        searchedPublicLinks:[],
+        searchedUserLinks:[],
+        allUserLinks:[],
+        removeLink:'',
+        getUpdateLink:{},
+        updatedLink:{},
+        filterResult:[]
     }
 export default function (state=initialState, action){
     switch(action.type){

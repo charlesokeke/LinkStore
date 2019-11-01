@@ -8,7 +8,7 @@ const authRoutes = require("./routes/auth");
 const linkRoutes = require('./routes/links')
 const {loginRequired, ensureCorrectUser} = require('./middleware/auth')
 const db = require("./models");
-const PORT = 8081;
+const PORT = process.env.PORT || 8081;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -27,6 +27,7 @@ app.get('/api/links', async function(req,res,next){
 			username:true,
 			profileImageUrl:true
 		})
+		console.log(allLinks)
 		return res.status(200).json(allLinks)
 
 	}catch(error){
