@@ -1,5 +1,5 @@
 # LinkStore
-# What the Application Does ?
+# What the Application Does:
 This application allows users to manage webpages/links. 
 It provides fuctionalities that allows users to search for webpages based on description and domain name. 
 Additionally, users can choose to make the pages they store private or public and has the option to upload and avatar image.
